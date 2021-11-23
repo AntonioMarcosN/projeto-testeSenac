@@ -1,10 +1,11 @@
-const automoveis = require("..model/automoveis.json");
+const automoveis = require("../models/automoveis.json");
 
-const getall = (req, res) => {
+const getAllAutomoveis = (req, res) =>{
     console.log(req.url);
+    res.status(200).send(automoveis)
+}
 
-    res.send(automoveis);
-};
-
-module.exports = {getall};
+module.exports = {
+    getAllAutomoveis,
+}
 
