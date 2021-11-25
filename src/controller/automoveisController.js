@@ -1,5 +1,6 @@
 const automoveis = require("../models/automoveis.json");
-const fs = require("fs")
+const fs = require("fs");
+const { RSA_NO_PADDING } = require("constants");
 
 const getAllAutomoveis = (req, res) =>{
     console.log(req.url);
@@ -13,14 +14,36 @@ const createAutomoveis = (req, res) => {
             res.status(500).send({ message: err })
         } else {
             console.log("Arquivo atualizado com sucesso!")
-            const automoveisFound = automoveis.find(automoveis => automoveis.id == id) // recupero o filme que foi criei no array de filmes      
+            const automoveisFound = automoveis.find(automoveis => automoveis.id == id) // recupero o filme que foi criei no array de filmes     
             res.status(200).send(automoveisFound)
         }
     })
 }
 
+    const getAutomoveis = (req, res) => {
+    const automoveisId = req.params.id
+    const automoveisFound = automoveis.find((automoveis) => automoveis.id == automoveisId)
+    if (automoveisFound) {
+        res.status(200).send(automoveisFound)
+        } else {
+        res.status(404).send({message: "automovel não encontrado"})
+    }
+}
+
+    const getAutomoveisNome = (req, res) => {
+    const automoveisCarro = req.params.carro
+    const automoveisFound = automoveis.find((automoveis) => automoveis.carro == automoveisCarro)
+    if (automoveisFound) {
+        res.status(200).send(automoveisFound)
+        } else {
+        res.status(404).send({message: "automovel não encontrado"})
+    }    
+
+}
+
 module.exports = {
-    //getAllAutomoveis,
+    getAutomoveisNome,
+    getAutomoveis,
     createAutomoveis,
     getAllAutomoveis,
 }
