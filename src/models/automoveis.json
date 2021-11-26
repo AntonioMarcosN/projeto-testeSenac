@@ -109,9 +109,9 @@
     },
     {
         "id": 13,
-        "carro": "Captur",
-        "tipo": "SUV",
-        "fabricante": "Renout",
+        "carro": "C60",
+        "tipo": "sedan",
+        "fabricante": "Mercedes",
         "cor": "azul",
         "novo": false,
         "motor": "2.0"
@@ -125,5 +125,4 @@
         "novo": true,
         "motor": "2.0"
     }
-   
 ]
